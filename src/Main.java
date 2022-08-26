@@ -1,6 +1,6 @@
 public class Main {
-    public static void main(String[] args) throws PlayerOutOfBoundsException {
-        Menu launch = new Menu();
+    public static void main(String[] args){
+        Game launch = new Game();
         launch.startGame();
     }
 }

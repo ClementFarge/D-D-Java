@@ -1,5 +1,4 @@
 package Characters;
-
 import Shield.DefensiveGears;
 import Weapons.OffensiveGears;
 

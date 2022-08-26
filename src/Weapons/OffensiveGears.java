@@ -1,7 +1,5 @@
 package Weapons;
 
-import java.util.Objects;
-
 public abstract class OffensiveGears {
 
     //Attributes

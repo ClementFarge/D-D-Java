@@ -1,7 +1,6 @@
 import Characters.Characters;
 import Characters.Wizard;
 import Characters.Warrior;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -9,12 +8,11 @@ public class Menu {
 
     //Methods
 
-    Scanner champ = new Scanner(System.in);
-
     public String choseChampion() {
-        System.out.println("Choose a champion : Warrior or Wizard");
+        Scanner champ = new Scanner(System.in);
+        System.out.println("Choose a champion : Warrior (1) or Wizard (2)");
         String champion = champ.nextLine();
-        while (!champion.equals("Warrior") && !champion.equals("Wizard")) {
+        while (!champion.equals("1") && !champion.equals("2")) {
             System.out.println("Choose a champion : Warrior or Wizard");
             try {
                 champion = champ.nextLine();
@@ -26,7 +24,7 @@ public class Menu {
 
     public Characters choseClass(String champion) {
         Characters character1;
-        if (champion.equals("Warrior")) {
+        if (champion.equals("1")) {
             character1 = new Warrior();
         } else {
             character1 = new Wizard();
@@ -34,25 +32,13 @@ public class Menu {
         return character1;
     }
 
-    Scanner choice = new Scanner(System.in);
-
     public void modifyName(Characters character1) {
+        Scanner choice = new Scanner(System.in);
         System.out.println("\nEnter your name");
         String modify = choice.nextLine();
         character1.setName(modify);
     }
 
-    Scanner launch = new Scanner(System.in);
-
-    public void startGame() throws PlayerOutOfBoundsException {
-        System.out.println("Ready to play ? Y/N");
-        if (launch.nextLine().equals("Y")) {
-            Game start = new Game();
-            start.startGame();
-        } else {
-            System.out.println("Abort");
-        }
-    }
 }
 
 
