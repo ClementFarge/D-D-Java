@@ -1,20 +1,22 @@
 package Weapons;
 
 public abstract class OffensiveGears {
-
     //Attributes
-    private String weapon ;
+    private String name;
+    private int attack;
+    private String type ;
+
+    protected OffensiveGears(String type , String name , int attack){
+        this.name = name ;
+        this.type = type ;
+        this.attack = attack;
+    }
 
     //Methods
 
-    public String toString(){
+    public String toString() {
         return
-                this.weapon ;
-    }
-
-    // Getters / Setters
-
-    public void setWeapon(String weapon){
-        this.weapon = weapon ;
+                this.name
+                        + "\nWeapon attack bonus : " + this.attack;
     }
 }

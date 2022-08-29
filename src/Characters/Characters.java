@@ -2,6 +2,7 @@ package Characters;
 import Shield.DefensiveGears;
 import Weapons.OffensiveGears;
 
+
 public abstract class Characters {
 
     //Attributes
@@ -20,8 +21,8 @@ public abstract class Characters {
         return
                 "\nName : " + this.name
                         + "\nLife : " + this.life
-                        + "\nAttack : " + this.attack
-                        + "\nWeapon : " + this.attackGears
+                        + "\nAttack : " + attack
+                        + "\nWeapon : " + attackGears
                         + "\nDefense : " + this.defensiveGears;
     }
 
@@ -33,9 +34,8 @@ public abstract class Characters {
     public void setLife(Integer life) {
             this.life = life;
     }
-    public void setAttack(Integer attack) {
+    public void setAttack(int attack) {
             this.attack = attack;
-
         }
     public void setAttackGears(OffensiveGears attackGears) {
         this.attackGears = attackGears ;

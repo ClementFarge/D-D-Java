@@ -1,13 +1,14 @@
 package Characters;
-import Weapons.Staff;
 import Shield.Barrier;
+import Weapons.spell.Magic;
+
 
 public class Wizard extends Characters{
 
     public Wizard() {
         setLife(6);
         setAttack(15);
-        setAttackGears(new Staff());
+        setAttackGears(new Magic());
         setDefensiveGears(new Barrier());
     }
 

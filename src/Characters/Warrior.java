@@ -1,13 +1,13 @@
 package Characters;
 import Shield.Shield;
-import Weapons.Weapon;
+import Weapons.hand.Stick;
 
 public class Warrior extends Characters {
 
     public Warrior() {
             setLife(10);
             setAttack(10);
-            setAttackGears(new Weapon());
+            setAttackGears(new Stick());
             setDefensiveGears(new Shield());
     }
 

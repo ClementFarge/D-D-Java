@@ -6,15 +6,13 @@ public abstract class Enemy {
     private String name;
     private int health;
     private int attack;
-    private int defense;
 
     @Override
     public String toString() {
         return
                 "\nEnemy : " + this.name
                         + "\nHealth : " + this.health
-                        + "\nAttack : " + this.attack
-                        + "\nDefense : " + this.defense;
+                        + "\nAttack : " + this.attack;
     }
 
     public void setName(String name){
@@ -25,8 +23,5 @@ public abstract class Enemy {
     }
     public void setAttack(int attack){
         this.attack = attack;
-    }
-    public void setDefense(int defense){
-        this.defense = defense;
     }
 }
