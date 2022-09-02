@@ -1,31 +1,33 @@
+package Main;
+
 import Characters.Characters;
 import Characters.Wizard;
 import Characters.Warrior;
+
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
     public void displayGameInfo() {
-        System.out.println("You are entering into the Darkest Dungeon, you will die, but when ?");
+        System.out.println("\nYou are entering into the Darkest Dungeon, will you be strong enough ?\n");
     }
 
-    public void beginTurn(){
+    public void beginTurn() {
         System.out.println("Press (Enter) to play a turn");
     }
 
-    public void waitForUser(){
+    public void waitForUser() {
         Scanner press = new Scanner(System.in);
-        while (!press.nextLine().equals(""));
+        while (!press.nextLine().equals("")) ;
     }
 
-    public void displayDice(int result){
+    public void displayDice(int result) {
         System.out.println("Dice : " + result);
     }
 
-    public void displayPosition(int position ){
+    public void displayPosition(int position) {
         System.out.println("Room : " + position + "/64");
-
     }
 
     public Characters choseClass() {
@@ -61,6 +63,21 @@ public class Menu {
     public void displayCharacter(Characters characters) {
         System.out.println(characters);
     }
+
+    public boolean displayStartFight() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Fight (1) or flee (2) ?");
+        if (sc.nextLine().equals("1")) {
+            System.out.println("Press (Enter) to play a turn");
+            System.out.println("\nFight ongoing !");
+            return true;
+        } else {
+            System.out.println("Fleeing");
+            return false;
+        }
+    }
+
 }
+
 
 

@@ -1,35 +1,49 @@
 package Table;
+
 import Characters.Characters;
 import Enemies.Dragon;
-import Enemies.Enemy;
 import Enemies.Goblin;
 import Enemies.Pyromancer;
+import Main.Fight;
+
+
 import java.util.Random;
+
 
 public class EnemyCase extends Case {
 
-    private Enemy enemy;
-    private int dice;
+    Dragon dragon;
+    Goblin goblin;
+    Pyromancer pyromancer;
+    Fight fight = new Fight();
 
-    public EnemyCase(Enemy enemy) {
-        this.enemy = enemy;
+
+    public EnemyCase() {
+
     }
 
-    @Override
+    //    @Override
     public void interact(Characters characters) {
         System.out.println("There is an enemy in this room, he's attacking you...");
-        this.dice = new Random().nextInt(10);
-        if (this.dice <= 6) {
-            Enemy goblin = new Goblin();
+        int dice = new Random().nextInt(10);
+        if (dice <= 6) {
+            goblin = new Goblin();
             System.out.println(goblin);
+            fight.fight(goblin, characters);
         }
-        if (this.dice > 6 && this.dice < 10) {
-            Enemy pyromancer = new Pyromancer();
+        if (dice > 6 && dice < 9) {
+            pyromancer = new Pyromancer();
             System.out.println(pyromancer);
-        } if (this.dice == 10){
-            Enemy dragon = new Dragon();
+            fight.fight(pyromancer, characters);
+        }
+        if (dice == 9) {
+            dragon = new Dragon();
             System.out.println(dragon);
+            fight.fight(dragon, characters);
         }
     }
 }
+
+
+
 

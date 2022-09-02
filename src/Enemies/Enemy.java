@@ -15,13 +15,23 @@ public abstract class Enemy {
                         + "\nAttack : " + this.attack;
     }
 
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
-    public void setHealth(int health){
+
+    public void setHealth(int health) {
         this.health = health;
     }
-    public void setAttack(int attack){
+
+    public void setAttack(int attack) {
         this.attack = attack;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public int getAttack() {
+        return attack;
     }
 }

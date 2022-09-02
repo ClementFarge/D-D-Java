@@ -1,3 +1,5 @@
+package Main;
+
 public class PlayerOutOfBoundsException extends Exception {
 
     public PlayerOutOfBoundsException() {

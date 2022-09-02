@@ -4,7 +4,7 @@ public class Pyromancer extends Enemy {
 
     public Pyromancer() {
         setName("Pyromancer");
-        setHealth(2);
-        setAttack(9);
+        setHealth(15);
+        setAttack(5);
     }
 }

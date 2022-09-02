@@ -13,6 +13,6 @@ public class Warrior extends Characters {
 
     @Override
     public String toString() {
-        return " [ Warrior ] " + super.toString();
+        return "\n [ Warrior ] " + super.toString();
     }
 }
