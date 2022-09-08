@@ -1,5 +1,5 @@
 package Main;
 
 public enum GameState {
-    INIT,PLAYING,VICTORY,DEFEAT;
+    INIT, PLAYING, VICTORY, DEFEAT
 }

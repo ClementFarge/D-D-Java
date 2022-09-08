@@ -2,7 +2,6 @@ package Table;
 
 import Characters.Characters;
 import Main.Menu;
-import Main.PlayerOutOfBoundsException;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,24 +11,21 @@ public class Board {
     private final ArrayList<Case> table = new ArrayList<>();
 
     public void initBoard() {
-        Case bonus = new BonusCase();
-        EnemyCase enemy = new EnemyCase();
-        Case empty = new EmptyCase();
         for (int i = 0; i < 64; i++) {
             if (i <= 21) {
-                this.table.add(empty);
+                this.table.add(new EmptyCase());
             }
             if (i > 21 && i <= 42) {
-                this.table.add(enemy);
+                this.table.add(new EnemyCase());
             }
             if (i > 42) {
-                this.table.add(bonus);
+                this.table.add(new BonusCase());
             }
         }
         Collections.shuffle(table);
     }
 
-    public void playTurn(Characters player) throws PlayerOutOfBoundsException {
+    public void playTurn(Characters player) {
         menu.beginTurn();
         menu.waitForUser();
         menu.displayDice(player.rollDice());

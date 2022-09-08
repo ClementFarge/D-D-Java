@@ -9,6 +9,10 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
+
+    public Menu(){
+
+    }
     public void displayGameInfo() {
         System.out.println("\nYou are entering into the Darkest Dungeon, will you be strong enough ?\n");
     }
@@ -43,13 +47,13 @@ public class Menu {
             }
         }
         if (champion.equals("1")) {
-            Characters character1;
-            character1 = new Warrior();
-            return character1;
+            Characters warrior;
+            warrior = new Warrior();
+            return warrior;
         } else {
-            Characters character1;
-            character1 = new Wizard();
-            return character1;
+            Characters wizard;
+            wizard = new Wizard();
+            return wizard;
         }
     }
 
@@ -77,6 +81,15 @@ public class Menu {
         }
     }
 
+    public boolean load(){
+        System.out.println("Would you load saved character ? Yes (1) No (2)");
+        Scanner sc = new Scanner(System.in);
+        return sc.nextLine().equals("1");
+    }
+
+    public void selectLoad(Characters player){
+        System.out.println("Which character would you load ?");
+    }
 }
 
 

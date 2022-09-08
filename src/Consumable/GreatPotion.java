@@ -1,10 +1,9 @@
 package Consumable;
 
-import Enemies.Goblin;
 
-public class GreatPotion extends Consumables{
+public class GreatPotion extends Consumables {
 
-    public GreatPotion(){
+    public GreatPotion() {
         setName("Great healing potion");
         setEffect(+5);
     }

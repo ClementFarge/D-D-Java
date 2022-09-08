@@ -1,7 +1,14 @@
 package Weapons.spell;
 
-public class Fire extends Spell {
+import Weapons.Handed;
+
+public class Fire extends Spell implements Handed {
     public Fire() {
-        super( "Fireball", 7);
+        super("Fireball", 7);
+    }
+
+    @Override
+    public boolean isHanded() {
+        return false;
     }
 }

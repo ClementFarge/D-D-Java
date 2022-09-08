@@ -2,7 +2,7 @@ package Consumable;
 
 public class Potion extends Consumables {
 
-    public Potion(){
+    public Potion() {
         setName("Healing potion");
         setEffect(+2);
     }

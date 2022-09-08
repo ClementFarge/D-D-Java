@@ -7,10 +7,9 @@ import java.util.Random;
 
 
 public abstract class Characters {
-
     //Attributes
 
-    private int dice ;
+    private int dice;
     private int position;
     private String name;
     private int life;
@@ -19,9 +18,9 @@ public abstract class Characters {
     private DefensiveGears defensiveGears;
 
     //Constructors
-    public Characters(){
+    public Characters() {
         this.dice = 0;
-        this.position = 1 ;
+        this.position = 1;
     }
 
     //Methods
@@ -58,7 +57,7 @@ public abstract class Characters {
     }
 
     public int updatePosition() {
-       return this.position = this.position + this.dice;
+        return this.position = this.position + this.dice;
     }
 
     public void updateNegativePosition() {
@@ -68,6 +67,7 @@ public abstract class Characters {
     public int rollDice() {
         return this.dice = new Random().nextInt(6) + 1;
     }
+
     public int getLife() {
         return this.life;
     }
@@ -76,11 +76,24 @@ public abstract class Characters {
         return this.attack;
     }
 
-    public int getDice(){
+    public int getDice() {
         return this.dice;
     }
-    public int getPosition(){
+
+    public int getPosition() {
         return this.position;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public OffensiveGears getAttackGears() {
+        return this.attackGears;
+    }
+
+    public DefensiveGears getDefensiveGears() {
+        return this.defensiveGears;
     }
 
 }

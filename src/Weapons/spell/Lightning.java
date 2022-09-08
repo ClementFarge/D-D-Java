@@ -1,7 +1,14 @@
 package Weapons.spell;
 
-public class Lightning extends Spell {
+import Weapons.Handed;
+
+public class Lightning extends Spell implements Handed {
     public Lightning() {
-        super( "Lightning flow", 2);
+        super("Lightning flow", 2);
+    }
+
+    @Override
+    public boolean isHanded() {
+        return false;
     }
 }

@@ -1,0 +1,219 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": true,
+    "cutInterfaceStructures": true,
+    "cutDataStructures": true,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 3,
+    "backwardDepth": 3,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "Main.Menu",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_2390489 { 
+   	label=Main
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Fight2390489[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Fight</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   menu: Menu [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ coreFight(enemy: Enemy, characters: Characters)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ fight(enemy: Enemy, characters: Characters)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ fleeing(player: Characters)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Game2390489[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Game</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   board: Board [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   manage: DatabaseManagement [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   menu: Menu [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   player: Characters [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   state: GameState [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ defeat()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ init()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ launch()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ play()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ victory()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Menu2390489[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Menu</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ beginTurn()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ choseClass(): Characters</TD></TR>
+<TR><TD ALIGN="LEFT" >+ displayCharacter(characters: Characters)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ displayDice(result: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ displayGameInfo()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ displayPosition(position: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ displayStartFight(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ load(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ modifyName(character1: Characters)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ selectLoad(player: Characters)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ waitForUser()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_80563118 { 
+   	label=Table
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Board80563118[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Board</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   menu: Menu [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   table: ArrayList&lt;Case&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ initBoard()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ playTurn(player: Characters)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Case80563118[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Case</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ interact(characters: Characters)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+EnemyCase80563118[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)EnemyCase</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   dragon: Dragon [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   fight: Fight [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   goblin: Goblin [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   pyromancer: Pyromancer [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ interact(characters: Characters)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+'edges    
+Board80563118 -> Menu2390489[label="menu
+[0..1]"];
+Case80563118 -> EnemyCase80563118[arrowhead=none, arrowtail=empty, dir=both];
+EnemyCase80563118 -> Fight2390489[label="fight
+[0..1]"];
+Fight2390489 -> Menu2390489[label="menu
+[0..1]"];
+Game2390489 -> Board80563118[label="board
+[0..1]"];
+Game2390489 -> Menu2390489[label="menu
+[0..1]"];
+    
+}
+@enduml

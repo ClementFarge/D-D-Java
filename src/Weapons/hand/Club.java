@@ -1,9 +1,15 @@
 package Weapons.hand;
 
-import Weapons.hand.Hand;
+import Weapons.Handed;
 
-public class Club extends Hand {
+
+public class Club extends Hand implements Handed {
     public Club() {
         super( "Club", 3);
+    }
+
+    @Override
+    public boolean isHanded() {
+        return true;
     }
 }

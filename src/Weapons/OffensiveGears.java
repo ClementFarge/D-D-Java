@@ -13,10 +13,10 @@ public abstract class OffensiveGears {
     }
 
     //Methods
-
+@Override
     public String toString() {
         return
-                this.name
-                        + "\nWeapon attack bonus : " + this.attack;
+                this.name ;
+//                        + "\nWeapon attack bonus : " + this.attack;
     }
 }

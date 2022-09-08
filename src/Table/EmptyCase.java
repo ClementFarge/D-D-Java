@@ -1,7 +1,7 @@
 package Table;
 
 import Characters.Characters;
-import Main.Game;
+
 
 public class EmptyCase extends Case {
 

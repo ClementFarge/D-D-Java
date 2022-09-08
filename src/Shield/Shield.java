@@ -2,7 +2,7 @@ package Shield;
 
 public class Shield extends DefensiveGears {
 
-    public Shield(){
+    public Shield() {
         setShield("Shield");
     }
 }

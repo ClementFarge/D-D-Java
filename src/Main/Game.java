@@ -3,48 +3,70 @@ package Main;
 import Characters.Characters;
 import Table.*;
 
+import java.sql.SQLException;
 
+/**
+ * Game class manages the main proceedings of the game, it calls all methods required to
+ * instantiate Characters, Board, Case and Gears
+ */
 public class Game {
 
     //Attributes
     private GameState state;
-
     private Characters player;
     private final Menu menu = new Menu();
     private final Board board = new Board();
+    private final DatabaseManagement manage = new DatabaseManagement();
 
+    /**
+     * Game constructor defines the GameState to initiate the game
+     */
     public Game() {
-        this.state = GameState.INIT ;
+        this.state = GameState.INIT;
     }
 
-    public void launch() throws PlayerOutOfBoundsException {
+    /**
+     * Launch methods defines the GameState (Enum) steps which define more precisely the proceedings
+     *
+     * @throws PlayerOutOfBoundsException Sends an exception if the character overtake the table boarder
+     */
+    public void launch() throws PlayerOutOfBoundsException, SQLException {
         while (isOver()) {
             switch (this.state) {
-                case INIT -> {
-                    this.init();
-                }
-                case PLAYING -> {
-                    this.play();
-                }
-                case VICTORY -> {
-                    this.victory();
-                }
-                case DEFEAT -> {
-                    this.defeat();
-                }
+                case INIT -> this.init();
+                case PLAYING -> this.play();
+                case VICTORY -> this.victory();
+                case DEFEAT -> this.defeat();
             }
         }
     }
 
-    public void init() {
+
+    /**
+     * Init methods calls methods which instantiate and define the character with it gears and attributes.
+     * Allow to save and load characters
+     * @throws SQLException
+     */
+    public void init() throws SQLException {
         menu.displayGameInfo();
-        this.player = menu.choseClass();
+        if (menu.load()) {
+           this.player = manage.loadCharacter(8);
+            menu.displayCharacter(this.player);
+        } else {
+            this.player = menu.choseClass();
+            menu.modifyName(this.player);
+            manage.save(this.player, String.valueOf(this.player.getClass()));
+            menu.displayCharacter(this.player);
+        }
         board.initBoard();
-        menu.modifyName(this.player);
-        menu.displayCharacter(this.player);
-        this.state = GameState.PLAYING ;
+        this.state = GameState.PLAYING;
     }
 
+    /**
+     * Play method manages the turns during the game, it changes the GameState to Victory or Defeat according to position and health of the player
+     *
+     * @throws PlayerOutOfBoundsException Sends an exception if the character overtake the table boarder
+     */
     public void play() throws PlayerOutOfBoundsException {
         board.playTurn(this.player);
         if (player.getPosition() == 64) {
@@ -55,13 +77,23 @@ public class Game {
         }
     }
 
+    /**
+     * Call isOver method and changes the GameState to Victory
+     */
     public void victory() {
         isOver();
     }
 
+    /**
+     * Call isOver method and changes the GameState to Defeat
+     */
     public void defeat() {
         isOver();
     }
+
+    /**
+     * Send a boolean who determine if the game id End or not
+     */
 
     public boolean isOver() {
         return true;
