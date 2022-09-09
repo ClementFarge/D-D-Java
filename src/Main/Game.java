@@ -1,7 +1,7 @@
 package Main;
 
 import Characters.Characters;
-import Table.*;
+import Board.*;
 
 import java.sql.SQLException;
 
@@ -41,16 +41,16 @@ public class Game {
         }
     }
 
-
     /**
      * Init methods calls methods which instantiate and define the character with it gears and attributes.
      * Allow to save and load characters
+     *
      * @throws SQLException
      */
     public void init() throws SQLException {
         menu.displayGameInfo();
         if (menu.load()) {
-           this.player = manage.loadCharacter(8);
+            this.player = manage.loadCharacter(8);
             menu.displayCharacter(this.player);
         } else {
             this.player = menu.choseClass();
@@ -63,12 +63,25 @@ public class Game {
     }
 
     /**
+     *
+     * @param player
+     */
+    public void playTurn(Characters player) {
+        menu.beginTurn();
+        menu.waitForUser();
+        menu.displayDice(player.rollDice());
+        menu.displayPosition(player.updatePosition());
+        Case currentCase = board.getTable().get(player.getPosition() - 1);
+        currentCase.interact(player);
+    }
+
+    /**
      * Play method manages the turns during the game, it changes the GameState to Victory or Defeat according to position and health of the player
      *
      * @throws PlayerOutOfBoundsException Sends an exception if the character overtake the table boarder
      */
     public void play() throws PlayerOutOfBoundsException {
-        board.playTurn(this.player);
+        playTurn(this.player);
         if (player.getPosition() == 64) {
             this.state = GameState.VICTORY;
         }
@@ -82,6 +95,7 @@ public class Game {
      */
     public void victory() {
         isOver();
+        System.out.println("You ");
     }
 
     /**

@@ -1,4 +1,4 @@
-package Table;
+package Board;
 
 import Characters.Characters;
 import Consumable.Consumables;
@@ -14,7 +14,7 @@ import Characters.*;
 
 import java.util.Random;
 
-public class BonusCase extends Case {
+public class BonusCase implements Case {
 
     public BonusCase() {
     }
@@ -25,7 +25,7 @@ public class BonusCase extends Case {
         if (characters instanceof Warrior) {
             if (dice == 0) {
                 OffensiveGears sword = new Sword();
-                System.out.println("You find a " + sword);
+                System.out.println(ANSI_YELLOW + "You find a " + sword + ANSI_RESET);
                 if (characters.getAttack() < 15) {
                     characters.setAttack(characters.getAttack() + 5);
                     characters.setAttackGears(sword);
@@ -33,7 +33,7 @@ public class BonusCase extends Case {
             }
             if (dice == 1) {
                 OffensiveGears club = new Club();
-                System.out.println("You find a " + club);
+                System.out.println(ANSI_YELLOW + "You find a " + club + ANSI_RESET);
                 if (characters.getAttack() < 12) {
                     characters.setAttack(characters.getAttack() + 3);
                     characters.setAttackGears(club);
@@ -43,7 +43,7 @@ public class BonusCase extends Case {
         if (characters instanceof Wizard) {
             if (dice == 0) {
                 OffensiveGears fire = new Fire();
-                System.out.println("You find a " + fire);
+                System.out.println(ANSI_YELLOW + "You find a " + fire + ANSI_RESET);
                 if (characters.getAttack() < 22) {
                     characters.setAttack(characters.getAttack() + 7);
                     characters.setAttackGears(fire);
@@ -51,7 +51,7 @@ public class BonusCase extends Case {
             }
             if (dice == 1) {
                 OffensiveGears lightning = new Lightning();
-                System.out.println("You find a " + lightning);
+                System.out.println(ANSI_YELLOW + "You find a " + lightning + ANSI_RESET);
                 if (characters.getAttack() < 17) {
                     characters.setAttack(characters.getAttack() + 2);
                     characters.setAttackGears(lightning);
@@ -60,12 +60,12 @@ public class BonusCase extends Case {
             if (dice == 2) {
                 Consumables potion = new Potion();
                 characters.setLife(characters.getLife() + 2);
-                System.out.println("You find a " + potion);
+                System.out.println(ANSI_YELLOW + "You find a " + potion + ANSI_RESET);
             }
             if (dice == 3) {
                 Consumables greatPotion = new GreatPotion();
                 characters.setLife(characters.getLife() + 5);
-                System.out.println("You find a " + greatPotion);
+                System.out.println(ANSI_YELLOW + "You find a " + greatPotion + ANSI_RESET);
             }
         }
     }

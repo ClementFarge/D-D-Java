@@ -8,17 +8,23 @@ import Characters.Warrior;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import java.io.*;
+
 public class Menu {
 
-    public Menu(){
+    public static final String ANSI_RED = "\u001B[31m" ;
+    public static final String ANSI_RESET = "\u001B[0m";
+
+    public Menu() {
 
     }
+
     public void displayGameInfo() {
-        System.out.println("\nYou are entering into the Darkest Dungeon, will you be strong enough ?\n");
+        System.out.println(ANSI_RED + "\nYou are entering into the Darkest Dungeon, will you be strong enough ?\n" + ANSI_RESET);
     }
 
     public void beginTurn() {
-        System.out.println("Press (Enter) to play a turn");
+        System.out.println(ANSI_RED + "Press (Enter) to play a turn" + ANSI_RESET);
     }
 
     public void waitForUser() {
@@ -72,7 +78,7 @@ public class Menu {
         Scanner sc = new Scanner(System.in);
         System.out.println("Fight (1) or flee (2) ?");
         if (sc.nextLine().equals("1")) {
-            System.out.println("Press (Enter) to play a turn");
+            System.out.println(ANSI_RED + "Press (Enter) to play a turn" + ANSI_RESET);
             System.out.println("\nFight ongoing !");
             return true;
         } else {
@@ -81,14 +87,10 @@ public class Menu {
         }
     }
 
-    public boolean load(){
+    public boolean load() {
         System.out.println("Would you load saved character ? Yes (1) No (2)");
         Scanner sc = new Scanner(System.in);
         return sc.nextLine().equals("1");
-    }
-
-    public void selectLoad(Characters player){
-        System.out.println("Which character would you load ?");
     }
 }
 

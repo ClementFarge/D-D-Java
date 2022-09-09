@@ -1,9 +1,9 @@
-package Table;
+package Board;
 
 import Characters.Characters;
 
 
-public class EmptyCase extends Case {
+public class EmptyCase implements Case {
 
     @Override
     public void interact(Characters characters) {

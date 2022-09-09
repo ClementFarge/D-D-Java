@@ -1,13 +1,9 @@
-package Table;
-
-import Characters.Characters;
-import Main.Menu;
+package Board;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class Board {
-    Menu menu = new Menu();
     private final ArrayList<Case> table = new ArrayList<>();
 
     public void initBoard() {
@@ -25,12 +21,7 @@ public class Board {
         Collections.shuffle(table);
     }
 
-    public void playTurn(Characters player) {
-        menu.beginTurn();
-        menu.waitForUser();
-        menu.displayDice(player.rollDice());
-        menu.displayPosition(player.updatePosition());
-        Case currentCase = table.get(player.getPosition() - 1);
-        currentCase.interact(player);
+    public ArrayList<Case> getTable(){
+        return table ;
     }
 }
